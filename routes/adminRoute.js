@@ -102,7 +102,7 @@ var upload = multer({ storage: storage })
 
 
 // addpizza data
-router.add("/addpizza", verifyToken, upload.single('file'), (req, res, next) => {
+router.post("/addpizza", verifyToken, upload.single('file'), (req, res, next) => {
     var file = req.file
     var pizza = new Pizza({
         pizzaname: req.body.pizzaname,
@@ -110,13 +110,14 @@ router.add("/addpizza", verifyToken, upload.single('file'), (req, res, next) => 
         pizzaprice: req.body.pizzaprice,
         pizzaimage: file.filename
     })
-    try {
+    if(err) {
+        return res.status(501).json(err);
+        
+    }
+    else {
         doc = pizza.save();
         console.log("Added a food");
         return res.status(201).json(doc);
-    }
-    catch (err) {
-        return res.status(501).json(err);
     }
 })
 
