@@ -110,14 +110,13 @@ router.post("/addpizza", verifyToken, upload.single('file'), (req, res, next) =>
         pizzaprice: req.body.pizzaprice,
         pizzaimage: file.filename
     })
-    if(err) {
-        return res.status(501).json(err);
-        
-    }
-    else {
+    try {
         doc = pizza.save();
         console.log("Added a food");
         return res.status(201).json(doc);
+    }
+    catch (err) {
+        return res.status(501).json(err);
     }
 })
 
