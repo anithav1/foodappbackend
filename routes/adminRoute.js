@@ -95,7 +95,7 @@ var storage = multer.diskStorage({
         callBack('C:/Users/HP/OneDrive/Desktop/frontend/src/assets/pizza')
     },
     filename: (req, file, callBack) => {
-        callBack(null, `${getTime()}-${file.originalname}`)
+        callBack(`${getTime()}-${file.originalname}`)
     }
 })
 var upload = multer({ storage: storage })
