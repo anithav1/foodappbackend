@@ -102,7 +102,7 @@ var upload = multer({ storage: storage })
 
 
 // addpizza data
-router.post("/addpizza", verifyToken, upload.single('file'), (req, res, next) => {
+router.add("/addpizza", verifyToken, upload.single('file'), (req, res, next) => {
     var file = req.file
     var pizza = new Pizza({
         pizzaname: req.body.pizzaname,
