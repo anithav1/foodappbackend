@@ -92,7 +92,7 @@ function getTime() {
 var storage = multer.diskStorage({
 
     destination: (req, file, callBack) => {
-        callBack(null,'C:/Users/HP/OneDrive/Desktop/frontend/src/assets/pizza')
+        callBack(null, 'C:/Users/HP/OneDrive/Desktop/frontend/src/assets/pizza')
     },
     filename: (req, file, callBack) => {
         callBack(null, `${getTime()}-${file.originalname}`)
@@ -116,7 +116,7 @@ router.post("/addpizza", verifyToken, upload.single('file'), (req, res, next) =>
         return res.status(201).json(doc);
     }
     catch (err) {
-        return res.status(500).json(err);
+        return res.status(501).json(err);
     }
 })
 
