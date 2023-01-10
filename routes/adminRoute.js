@@ -92,10 +92,10 @@ function getTime() {
 var storage = multer.diskStorage({
 
     destination: (req, file, callBack) => {
-        callBack('C:/Users/HP/OneDrive/Desktop/frontend/src/assets/pizza')
+        callBack(null, 'C:/Users/HP/OneDrive/Desktop/frontend/src/assets/pizza')
     },
     filename: (req, file, callBack) => {
-        callBack(`${getTime()}-${file.originalname}`)
+        callBack(null, `${getTime()}-${file.originalname}`)
     }
 })
 var upload = multer({ storage: storage })
